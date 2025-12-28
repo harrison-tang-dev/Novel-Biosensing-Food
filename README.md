@@ -54,7 +54,60 @@ PORT=3000
 DATABASE_URL=your_database_url
 API_KEY=your_api_key
 ```
+Environment files should never be committed to version control.
 
+_**Frontend Setup**_
 
+The frontend provides interface for viewing scan results, analyzing data, and interacting with the system through the mobile app. It communicates directly with the backend APIs.
 
+Ensure Node.js is installed, then navigate to the frontend directory - standard setup procedures.
 
+The frontend will usually be accessible at one of the following addresses depending on configuration:
+```python
+http://localhost:3000
+http://localhost:5173
+```
+
+The frontend must be configured to point to the backend API. This is commonly done in a configuration file or environment variable.
+```python
+const API_BASE_URL = "http://localhost:3000/api";
+```
+
+_**Flutter Mobile App Setup**_
+
+The Flutter application, SafePlates, provides a mobile interface for interacting with all data and messages. It allows users to scan food samples or input personal data, view results, and receive food safety and health guidance.
+
+Install the Flutter SDK and verify the environment.
+```python
+flutter doctor
+```
+
+Navigate to the Flutter directory.
+```python
+cd Flutter
+```
+
+Install Flutter dependencies.
+```python
+flutter pub get
+```
+
+Run the application on an emulator or connected device.
+```python
+flutter run
+```
+If running on an Android emulator, the backend API must use the emulator bridge address instead of localhost.
+```python
+const String apiBaseUrl = "http://10.0.2.2:3000/api";
+```
+For physical devices, replace the IP address with your machine’s local network IP.
+
+_**Contributing**_
+
+Contributions are welcome. Keep changes scoped to the relevant component. Any backend API changes should be reflected in both frontend and Flutter clients. New configuration values or environment variables should be documented clearly.
+
+_**License**_
+
+This project is licensed under the GNU General Public License version 3.0.
+
+This repository provides the software foundation for a scalable and accessible biosensing system focused on improving food safety and public health outcomes.
